@@ -11,6 +11,9 @@
 6.	Jumper wires – As required
 7.	USB Cable – 1 No (for uploading code and powering Arduino)
 8.	Computer with Tinkercad or Arduino IDE installed
+   
+## circuit diagram:
+<img width="930" height="695" alt="image" src="https://github.com/user-attachments/assets/7f03b835-e647-4d62-9e9c-d808b133bd07" />
 
 ## Theory:
 
@@ -60,10 +63,42 @@ Step 7: Save Your Work
 
 
 # Code:
+```
+int pirsensor = 0;
 
+void setup()
+{
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(10, OUTPUT);
+}
+
+void loop()
+{
+  pirsensor = analogRead(A0);
+  Serial.println(pirsensor);
+  if (pirsensor >= 100) {
+    digitalWrite(7, LOW);
+    digitalWrite(6, HIGH);
+    tone(10, 92, 100); // play tone 30 (F#2 = 92 Hz)
+  } else {
+    digitalWrite(7, HIGH);
+    digitalWrite(6, LOW);
+    digitalWrite(10, LOW);
+  }
+  delay(10); // Delay a little bit to improve simulation performance
+}
+```
 
 
 # Output:
+
+
+https://github.com/user-attachments/assets/748b6abf-bdbe-46ac-8f1e-61205e772edc
+
 
 
 
